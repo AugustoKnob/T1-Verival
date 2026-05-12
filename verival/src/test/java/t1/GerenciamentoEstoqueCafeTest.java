@@ -24,7 +24,7 @@ public class GerenciamentoEstoqueCafeTest {
     @Test
     void somaTotal() {
         GerenciamentoEstoqueCafe estoque = new GerenciamentoEstoqueCafe(2, 3, 4, 1);
-        assertEquals(13, estoque.calcularTotalItens());
+        assertEquals(10, estoque.calcularTotalItens());
     }
 
     @Test
