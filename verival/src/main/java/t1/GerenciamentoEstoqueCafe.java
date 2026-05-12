@@ -5,16 +5,12 @@ public class GerenciamentoEstoqueCafe {
     private int estoqueCafe;
     private int estoqueChocolate;
     private int estoquePaes;
-    private int estoqueAcucar;
-    private int estoqueCanela;
 
-    public GerenciamentoEstoqueCafe(int leite, int cafe, int chocolate, int paes, int acucar, int canela) {
+    public GerenciamentoEstoqueCafe(int leite, int cafe, int chocolate, int paes) {
         this.estoqueLeite = leite;
         this.estoqueCafe = cafe;
         this.estoqueChocolate = chocolate;
         this.estoquePaes = paes;
-        this.estoqueAcucar = acucar;
-        this.estoqueCanela = canela;
     }
 
     public int obterEstoqueLeite() {
@@ -33,14 +29,6 @@ public class GerenciamentoEstoqueCafe {
         return estoquePaes;
     }
 
-    public int obterEstoqueAcucar() {
-        return estoqueAcucar;
-    }
-
-    public int obterEstoqueCanela() {
-        return estoqueCanela;
-    }
-
     public boolean verificarDisponibilidade(String item, int quantidade) {
         if (quantidade < 0) {
             return false;
@@ -55,11 +43,6 @@ public class GerenciamentoEstoqueCafe {
             case "paes":
             case "pães":
                 return estoquePaes >= quantidade;
-            case "acucar":
-            case "açúcar":
-                return estoqueAcucar >= quantidade;
-            case "canela":
-                return estoqueCanela >= quantidade;
             default:
                 return false;
         }
@@ -82,13 +65,6 @@ public class GerenciamentoEstoqueCafe {
             case "paes":
             case "pães":
                 estoquePaes += quantidade;
-                break;
-            case "acucar":
-            case "açúcar":
-                estoqueAcucar += quantidade;
-                break;
-            case "canela":
-                estoqueCanela += quantidade;
                 break;
         }
     }
@@ -114,19 +90,12 @@ public class GerenciamentoEstoqueCafe {
             case "pães":
                 estoquePaes -= quantidade;
                 break;
-            case "acucar":
-            case "açúcar":
-                estoqueAcucar -= quantidade;
-                break;
-            case "canela":
-                estoqueCanela -= quantidade;
-                break;
         }
         return true;
     }
 
     public int calcularTotalItens() {
-        return estoqueLeite + estoqueCafe + estoqueChocolate + estoquePaes + estoqueAcucar + estoqueCanela;
+        return estoqueLeite + estoqueCafe + estoqueChocolate + estoquePaes;
     }
 
     public boolean estoqueCritico() {
@@ -141,12 +110,6 @@ public class GerenciamentoEstoqueCafe {
             contadorCritico++;
         }
         if (estoquePaes < 3) {
-            contadorCritico++;
-        }
-        if (estoqueAcucar < 5) {
-            contadorCritico++;
-        }
-        if (estoqueCanela < 2) {
             contadorCritico++;
         }
         return contadorCritico >= 2;
